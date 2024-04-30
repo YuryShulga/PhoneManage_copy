@@ -1,0 +1,47 @@
+﻿<Window x:Class="PhoneManage.ExtraWindows.FindWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PhoneManage.ExtraWindows"
+        mc:Ignorable="d"
+        Title="Поиск абонента по номеру" Height="170" Width="350" Closing="Window_Closing"
+        WindowStartupLocation="CenterOwner" ResizeMode="CanMinimize">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock 
+        Grid.Row="0"
+        Padding="5" 
+        FontSize="16"
+        HorizontalAlignment="Center">Введите номер телефона</TextBlock>
+
+        <TextBox 
+        Grid.Row="1"
+        Margin="10" 
+        Padding="5" 
+        FontSize="16"
+        Width="200"
+        HorizontalAlignment="Center"
+        Text="{Binding PhoneNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+            <TextBox.InputBindings>
+                <KeyBinding Key="Enter" Command="{Binding FindAbonentButtonCommand}"/>
+            </TextBox.InputBindings>
+        </TextBox>
+
+        <Button
+        Grid.Row="2"
+        ToolTip="Сохранить видимые данные в файл" 
+        Margin="10" 
+        Padding="5" 
+        FontSize="16"
+        HorizontalAlignment="Center"
+        Command="{Binding FindAbonentButtonCommand}">Поиск</Button>
+    </Grid>
+    
+</Window>
